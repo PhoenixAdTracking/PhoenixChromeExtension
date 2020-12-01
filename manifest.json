@@ -1,0 +1,6 @@
+  {
+    "name": "Phoenix Conversion Extension",
+    "version": "1.0",
+    "description": "Extension for interacting with the Phoenix Conversions API",
+    "manifest_version": 2
+  }
