@@ -4,7 +4,9 @@ let registerButton = document.getElementById("registerButton");
 function changePopup (destinationPopup) {
       chrome.browserAction.setPopup({popup: destinationPopup});
 }
+loginButton.onclick = function () {changePopup("loginPopup.html");};
 
-loginButton.onclick = changePopup("loginPopup.html");
-
-registerButton.onclick = changePopup("registerPopup.html");
+registerButton.onclick = function () {changePopup("registerPopup.html");};
+$(document).ready(function() {
+  if (localStorage.getItem("loginToken"))
+})
