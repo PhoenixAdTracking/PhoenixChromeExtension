@@ -3,9 +3,10 @@ let registerForm = $("#loginForm");
 
 function changePopup (destinationPopup) {
     chrome.browserAction.setPopup({popup: destinationPopup});
+    window.location.href=destinationPopup;
 }
 
-backButton.onclick = changePopup("startPopup.html");
+backButton.onclick = function() {changePopup("startPopup.html");};
 
 function loginRequest(
   username,
