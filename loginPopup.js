@@ -15,8 +15,7 @@ function loginRequest(
       "http://localhost:8080/login?username=kiernan&password=password",
       {"username" : "kiernan", "password": "password"},
       function (data, status, xhr) {
-        localStorage.setItem("all headers", xhr.getAllResponseHeaders());
-        localStorage.setItem("loginToken", xhr.getResponseHeader("Authorization"));
+        chrome.storage.sync.set({"loginToken", xhr.getResponseHeader("Authorization")});
     }).fail(function () {
       console.log("error");
     });
