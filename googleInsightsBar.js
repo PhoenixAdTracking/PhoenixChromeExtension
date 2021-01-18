@@ -1,6 +1,6 @@
-const fbAccessToken = "EAANF12FuYPUBALtOUwJ808wqzIqoxNZCVRTLQl7jG1dqXZABetaZAuzwikY1XVd3dhIJPZAZAF0GocuRYikZCvO9Ku8As20ssmilKvAz3iXYWiiU9HGLStjAvLBD20zgHKZCNLOWSn0Bg8Is6q9XBYeRdFc3LrMybMlKa7qXYlweZAzdX0Kp8Ar3AsXnoZBnPN4OJpIXNWIe6waTvcvdVOViAkwLFkBJfmNnnAvCs4LiSDwZDZD";
+const fbAccessToken = "EAANF12FuYPUBAOeucKuN6cOcjdCSBhyiWo7oDq4zQKeqI5teU7Lw6uuto4AXIuw7F9Wqpy0oZAtGb5aHAWyFFkFd6KgTpYAr4OwZAKwTUfWmsL8z2pnZBjF0pqkhzHFqK0ZBdLWPiqrEyjbhnZAbmaxh6hRl2ZBJoLfmBdoLZCBEPZB9thF07xh1MzitfzZAUe1IYYgjZAfhV8VNaWexZAHh1bqftmA9skJi0bF9uG32kuZBlwZDZD";
 const fbAdAccountId = "act_466977260656388";
-const loginToken = "Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJQaG9lbml4Q29udmVyc2lvbnMiLCJhdWQiOiJQaG9lbml4Q29udmVyc2lvbnMiLCJzdWIiOiJraWVybmFuIiwiZXhwIjoxNjExMzQ2MzIzfQ.B32AyJ9sdWgfOp-OMlryNVCzEB34DNEL2x3Ji7PK4qU57vX01lkkUj5S7-kqZIKYu6j3mxzDBLIIh54VQKcwMg";
+const loginToken = "Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJQaG9lbml4Q29udmVyc2lvbnMiLCJhdWQiOiJQaG9lbml4Q29udmVyc2lvbnMiLCJzdWIiOiJraWVybmFuIiwiZXhwIjoxNjExODE5MzEzfQ.JT21Pj43c1CXEy5Cmb-TpttDfbsY87ymOn9f6H30w7ehpuI_0eqCRzqhsafEt9AUzUgYUZRxGcML5J9lmUzFlg";
 
 
 //Create Bar that will contain all selectable drop-downs
@@ -68,15 +68,15 @@ adAccountSelect.onchange = function () {
     method: 'GET',
     contentType: 'application/json',
     url: "https://phoenixconversions-1.herokuapp.com/insights/multi/campaigns",
-    data: JSON.stringify({
+    data: {
       "adAccountId": currentAdAccount,
-      "accessToken": fbAccessToken}),
+      "accessToken": fbAccessToken},
     success: function (data, textStatus, jqXHR) {
       alert("success!");
       var length = data.length;
       for (i = 0; i < length; i++) {
-        console.log(campaign.name);
         let campaign = data[i];
+        console.log(campaign.name);
         let campaignOption = document.createElement("option");
         campaignOption.setAttribute("value", campaign.id);
         campaignOption.innerHTML = campaign.name;
@@ -99,9 +99,9 @@ campaignSelect.onchange = function () {
     method: 'GET',
     contentType: 'application/json',
     url: "https://phoenixconversions-1.herokuapp.com/insights/multi/adsets",
-    data: JSON.stringify({
+    data: {
       "campaignId": currentCampaign,
-      "accessToken": fbAccessToken}),
+      "accessToken": fbAccessToken},
     success: function (data, textStatus, jqXHR) {
       var length = data.length;
       for (i = 0; i < length; i++) {
@@ -114,7 +114,8 @@ campaignSelect.onchange = function () {
     },
     error: function (jqXHR, textStatus, errorThrown) {
       alert(jqXHR.status + ": " + textStatus + ": " + jqXHR.responseText);
-    }});};
+    }});
+};
 
 function clearOptions (selectElement) {
   var length = selectElement.options.length;

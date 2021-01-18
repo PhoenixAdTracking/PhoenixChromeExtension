@@ -12,10 +12,10 @@ function loginRequest(
   username,
   password) {
     $.post(
-      "http://localhost:8080/login?username=kiernan&password=password",
+      "https://phoenixconversions-1.herokuapp.com/login?username=kiernan&password=password",
       {"username" : "kiernan", "password": "password"},
       function (data, status, xhr) {
-        chrome.storage.sync.set({"loginToken", xhr.getResponseHeader("Authorization")});
+        localStorage.setItem("loginToken", xhr.getResponseHeader("Authorization"));
     }).fail(function () {
       console.log("error");
     });
